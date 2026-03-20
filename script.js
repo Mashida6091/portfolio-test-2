@@ -1,4 +1,24 @@
-// Animation apparition au scroll
+// LOADER
+window.onload = () => {
+    setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        typing();
+    }, 1200);
+};
+
+// TYPING
+const text = "BTS SIO SISR | Systèmes & Réseaux";
+let i = 0;
+
+function typing() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 40);
+    }
+}
+
+// SCROLL ANIMATION
 const cards = document.querySelectorAll(".card");
 
 const observer = new IntersectionObserver(entries => {
@@ -9,30 +29,14 @@ const observer = new IntersectionObserver(entries => {
     });
 });
 
-cards.forEach(card => {
-    observer.observe(card);
-});
+cards.forEach(card => observer.observe(card));
 
-// Navbar active
+// NAV ACTIVE
 const links = document.querySelectorAll("nav a");
-const currentPage = window.location.pathname.split("/").pop();
+const current = window.location.pathname.split("/").pop();
 
 links.forEach(link => {
-    if (link.getAttribute("href") === currentPage) {
+    if (link.getAttribute("href") === current) {
         link.classList.add("active");
     }
 });
-
-// Effet typing
-const text = "Portfolio BTS SIO SISR";
-let index = 0;
-
-function typing() {
-    if (index < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typing, 60);
-    }
-}
-
-window.onload = typing;
