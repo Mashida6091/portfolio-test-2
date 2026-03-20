@@ -61,9 +61,9 @@ nav a:hover, nav a.active {
 
 /* CONTAINER */
 .container {
-    padding: 120px 40px;
-    max-width: 1100px;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 /* TITRES */
